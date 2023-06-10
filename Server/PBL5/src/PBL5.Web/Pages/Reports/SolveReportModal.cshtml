@@ -1,0 +1,33 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PBL5.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal;
+@model PBL5.Web.Pages.Reports.SolveReportModal
+@inject IHtmlLocalizer<PBL5Resource> L
+@inject ICurrentUser CurrentUser
+
+@{
+    Layout = null;
+}
+
+<form abp-model="ViewModel" asp-page="/Reports/SolveReportModal">
+    <abp-modal>
+        <abp-modal-header title="@L["Edit"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-row>
+                <abp-input asp-for="ViewModel.ReportDate"></abp-input>
+            </abp-row>
+            <abp-row>
+                <abp-select asp-for="ViewModel.ReportStatus" asp-items="@Model.ListStatusReports"></abp-select> 
+            </abp-row>
+            <abp-row>
+                <abp-input asp-for="ViewModel.Content"></abp-input>
+            </abp-row>
+                <abp-input asp-for="ViewModel.Id"></abp-input>
+                <abp-input asp-for="ViewModel.EmployeeId"></abp-input>
+                <abp-input asp-for="ViewModel.TypeOfReport"></abp-input>
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

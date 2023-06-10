@@ -1,0 +1,34 @@
+variables:
+  DOCKER_HUB_REPO: gnohp18/pbl5web 
+  DOCKER_HUB_USERNAME: gnohp18
+  DOCKER_HUB_PASSWORD: 18042002P
+stages:
+  - build
+  - publish
+build:
+  tags:
+    - latest
+  only:
+    - main
+  stage: build
+  before_script:
+    - pwd
+    - ls -a
+    - whoami
+  script:
+    - dotnet build "PBL5/src/PBL5.Web/PBL5.Web.csproj"
+
+publish:
+  tags:
+    - latest
+  only: 
+    - main
+  stage: publish
+  before_script:
+    - pwd
+    - ls -a
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
+    - cd PBL5/src/PBL5.Web
+  script:
+    - docker build -t $DOCKER_HUB_REPO .
+    - docker push $DOCKER_HUB_REPO 

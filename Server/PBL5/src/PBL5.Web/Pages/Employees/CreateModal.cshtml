@@ -1,0 +1,22 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PBL5.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal;
+@model PBL5.Web.Pages.Employees.CreateModalModel
+@inject IHtmlLocalizer<PBL5Resource> L
+@inject ICurrentUser CurrentUser
+
+@{
+    Layout = null;
+}
+
+<abp-dynamic-form abp-model="ViewModel" asp-page="/Employees/CreateModal">
+    <abp-modal>
+        <abp-modal-header title="@L["Create"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>

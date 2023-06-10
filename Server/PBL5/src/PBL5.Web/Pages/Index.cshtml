@@ -1,0 +1,34 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PBL5.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming
+@model PBL5.Web.Pages.IndexModel
+@inject IHtmlLocalizer<PBL5Resource> L
+
+@section styles {
+    <abp-style src="/Pages/Index.css" />
+}
+@section scripts {
+    <abp-script src="/Pages/Index.js" />
+}
+<abp-card class="calendar">
+    <abp-row class="dayInWeek">
+        <abp-column><h3>Sun</h3></abp-column>
+        <abp-column><h3>Mon</h3></abp-column>
+        <abp-column><h3>Tue</h3></abp-column>
+        <abp-column><h3>Wed</h3></abp-column>
+        <abp-column><h3>Thu</h3></abp-column>
+        <abp-column><h3>Fri</h3></abp-column>
+        <abp-column><h3>Sat</h3></abp-column>
+    </abp-row>
+    <abp-row class="d-flex">
+        <abp-column class="weekColSun d-flex flex-column"></abp-column>
+        <abp-column class="weekColMon d-flex flex-column"></abp-column>
+        <abp-column class="weekColTue d-flex flex-column"></abp-column>
+        <abp-column class="weekColWed d-flex flex-column"></abp-column>
+        <abp-column class="weekColThu d-flex flex-column"></abp-column>
+        <abp-column class="weekColFri d-flex flex-column"></abp-column>
+        <abp-column class="weekColSat d-flex flex-column"></abp-column>
+    </abp-row>
+</abp-card>

@@ -1,0 +1,28 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PBL5.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal;
+@model PBL5.Web.Pages.TimeSheets.IdentificationImageModal
+@inject IHtmlLocalizer<PBL5Resource> L
+@inject ICurrentUser CurrentUser
+
+@{
+    Layout = null;
+}
+@section scripts
+{
+    @* <abp-script src="/Pages/TimeSheets/identificationImageModal.js" /> *@
+}
+
+<abp-modal id="timeSheetForm">
+    <abp-modal-body>
+        <abp-input asp-for="ViewModel.Id" type="hidden"/>
+        <abp-input asp-for="ViewModel.PathCheckIn" type="hidden"/>
+        <abp-input asp-for=@Model.IsCheckIn type="hidden"/>
+        <abp-card>
+            <img alt="avatar" src="~/UploadFile/profile.jpg" id="imgCheckIn"/> 
+        </abp-card>
+    </abp-modal-body>
+    <abp-modal-footer buttons="@(AbpModalButtons.Cancel)"></abp-modal-footer>
+</abp-modal>

@@ -1,0 +1,9 @@
+.dayInWeek{
+    text-align: right;
+}
+.dates{
+    border: 1px solid;
+    display: inline-block;
+    height: 155px;
+    width: 185px;
+}

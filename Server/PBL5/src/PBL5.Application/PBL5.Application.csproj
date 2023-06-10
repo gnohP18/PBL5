@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>PBL5</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PBL5.Domain\PBL5.Domain.csproj" />
+    <ProjectReference Include="..\PBL5.Application.Contracts\PBL5.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CorePush" Version="4.1.0" />
+    <PackageReference Include="dotAPNS" Version="4.2.1" />
+    <PackageReference Include="Fayakun.Fcm" Version="1.2.0" />
+    <PackageReference Include="FirebaseAdmin" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="PushSharp" Version="4.0.10" />
+    <PackageReference Include="Volo.Abp.Account.Application" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.MailKit" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="7.0.2" />
+  </ItemGroup>
+
+</Project>

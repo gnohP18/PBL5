@@ -1,0 +1,97 @@
+@page
+@model PBL5.Web.Pages.Statistics.IndexModel
+@using PBL5.Enum
+@using PBL5.Web.Menus
+@using PBL5.Permissions
+@using Microsoft.Extensions.Localization
+@using PBL5.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Microsoft.AspNetCore.Authorization
+@inject IPageLayout PageLayout
+@inject IStringLocalizer<PBL5Resource> L
+@inject IAuthorizationService Authorization
+@{
+    PageLayout.Content.Title = L["Statistic"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:Statistic"].Value);
+    PageLayout.Content.MenuItemName = PBL5Menus.Statistic;
+}
+
+@section scripts{
+    <abp-script src="/Pages/Statistics/index.js" />
+    <abp-script src="/Common/Common.js"/>
+}
+
+@section styles{
+    <abp-style src="/Pages/Statistics/Index.css" />
+}
+
+<abp-card>
+    <abp-row>
+        <abp-column size="_6">
+            <abp-card>
+                <abp-row>
+                    <abp-column size="_6">
+                        <abp-card>
+                            <abp-card-body>
+                                <abp-column>
+                                    <i class="fa fa-user"></i> Employee checked-in<h3>@Model.TotalViewModel.TotalEmployeeCheckIn</h3> 
+                                </abp-column>
+                                <abp-column>
+                                </abp-column>
+                            </abp-card-body>
+                        </abp-card>
+                    </abp-column>
+                    <abp-column size="_6">
+                        <abp-card>
+                            <abp-card-body>
+                                <abp-column>
+                                    <i id="iconStatistic" class="fa fa-clock"></i> Total timework all employee in this day<h3>@Model.TotalViewModel.TotalTimeEmployeeWork</h3>
+                                </abp-column>
+                                <abp-column>
+                                    
+                                </abp-column>
+                            </abp-card-body>
+                        </abp-card>
+                    </abp-column>
+                </abp-row>
+            </abp-card>
+        </abp-column>
+        <abp-column size="_6">
+            <abp-card>
+                <abp-card-body>
+                <abp-row>
+                    <abp-column size="_6">
+                        <abp-input asp-for="@Model.SearchViewModel.DateSearch" />
+                    </abp-column>
+                    <abp-column size="_6">
+                        <abp-select asp-for="@Model.SearchViewModel.EmployeeCode" asp-items="@Model.ListEmployees" />
+                    </abp-column>
+                </abp-row>
+                <abp-row>
+                    <abp-column size="_6">
+                        <abp-button class="search-bar" type="submit" id="Search" text="@L["Common:Search"].Value"
+                            icon="search" button-type="Primary" />
+                    </abp-column>
+                    <abp-column size="_6">
+                        <abp-button type="submit" id="statistic" text="Statistic"
+                            icon="user" button-type="Primary" /> 
+                    </abp-column>
+                </abp-row>
+                </abp-card-body>
+            </abp-card>
+        </abp-column>
+    </abp-row>
+    <abp-row>
+        <abp-column size="_2">
+            <abp-card>
+            </abp-card>
+        </abp-column>
+        <abp-column size="_10">
+            <abp-card>
+                <abp-card-body>
+                    <abp-table striped-rows="true" class="table-bordered" id="EmployeeTable1"></abp-table>
+                </abp-card-body>
+            </abp-card>
+        </abp-column>
+    </abp-row>
+</abp-card>

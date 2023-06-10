@@ -1,0 +1,78 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using PBL5.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal;
+@model PBL5.Web.Pages.Statistics.DetailEmployeeStatisticModal
+@inject IHtmlLocalizer<PBL5Resource> L
+@inject ICurrentUser CurrentUser
+
+@{
+    Layout = null;
+}
+<section scripts>
+    <script>
+        const dataName = @Json.Serialize(@Model.ViewModel.Name);
+        const dataCode = @Json.Serialize(@Model.ViewModel.EmployeeCode);
+        const dataTime = @Json.Serialize(@Model.ViewModel.TotalTimeWorkInAMonth);
+        const dataOff = @Json.Serialize(@Model.ViewModel.DayOff);
+        const dataLate = @Json.Serialize(@Model.ViewModel.DayLate);
+        const dataWork = @Json.Serialize(@Model.ViewModel.DayWork);     
+    </script>
+</section>
+<form abp-model="ViewModel" asp-page="/Statistics/DetailEmployeeStatisticModal">
+    <abp-modal>
+        <abp-modal-header title="Statistic"></abp-modal-header>
+        <abp-modal-body>
+            <abp-row>
+                <abp-column size="_5">
+                    <h4>Name</h4>
+                </abp-column>
+                <abp-column>
+                    <h4 id="detail-row">@Model.ViewModel.Name</h4>
+                </abp-column>
+            </abp-row>
+            <abp-row>
+                <abp-column size="_5">
+                    <h4>Code</h4>
+                </abp-column>
+                <abp-column>
+                    <h4 id="detail-row">@Model.ViewModel.EmployeeCode</h4>
+                </abp-column>
+            </abp-row>
+            <abp-row>
+                <abp-column size="_5">
+                    <h4>Total time work</h4>
+                </abp-column>
+                <abp-column>
+                    <h4 id="detail-row">@Model.ViewModel.TotalTimeWorkInAMonth</h4>
+                </abp-column>
+            </abp-row>
+            <abp-row>
+                <abp-column size="_5">
+                    <h4>Day off</h4>
+                </abp-column>
+                <abp-column>
+                    <h4 id="detail-row">@Model.ViewModel.DayOff</h4>
+                </abp-column>
+            </abp-row>
+            <abp-row>
+                <abp-column size="_5">
+                    <h4>Day late</h4>
+                </abp-column>
+                <abp-column>
+                    <h4 id="detail-row">@Model.ViewModel.DayLate</h4>
+                </abp-column>
+            </abp-row>
+            <abp-row>
+                <abp-column size="_5">
+                    <h4>Day work</h4>
+                </abp-column>
+                <abp-column>
+                    <h4 id="detail-row">@Model.ViewModel.DayWork</h4>
+                </abp-column>
+            </abp-row>
+        </abp-modal-body>
+        <abp-modal-footer buttons="@AbpModalButtons.Cancel"></abp-modal-footer>
+    </abp-modal>
+</form>

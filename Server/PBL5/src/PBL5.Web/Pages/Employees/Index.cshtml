@@ -1,0 +1,62 @@
+@page
+@model PBL5.Web.Pages.Employees.IndexModel
+@using PBL5.Enum
+@using PBL5.Web.Menus
+@using PBL5.Permissions
+@using Microsoft.Extensions.Localization
+@using PBL5.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Microsoft.AspNetCore.Authorization
+@inject IPageLayout PageLayout
+@inject IStringLocalizer<PBL5Resource> L
+@inject IAuthorizationService Authorization
+@{
+    PageLayout.Content.Title = L["Employee"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:Employee"].Value);
+    PageLayout.Content.MenuItemName = PBL5Menus.Employee;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Employees/index.js" />
+    <abp-script src="/Pages/Employees/createUpdate.js" />
+    <abp-script src="/Common/Common.js"/>
+}
+@section styles
+{
+    <abp-style src="/Pages/Employees/Index.css" />
+    <abp-style src="/Common/Common.css"/>
+}
+
+<section class="px-3">
+    <abp-row class="py-3">
+        <abp-column size-md="_9">
+            <h3>@L["Menu:Employee"]</h3>
+        </abp-column>
+        <abp-column size-md="_3" class="text-right">
+            @if (await Authorization.IsGrantedAsync(PBL5Permissions.Employee.Create))
+            {
+                <abp-button id="NewEmployee"
+                            text="@L["Create"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+            }
+        </abp-column>
+    </abp-row>
+    <abp-card class="py-3">
+        <abp-row class="px-3" v-align="End">
+            <abp-column size-md="_3">
+                <abp-input asp-for="@Model.SearchViewModel.KeySearch" label=@L["Employee:Search"].Value />
+            </abp-column>
+            <abp-column size-md="_3">
+                <abp-button class="search-bar" type="submit" id="Search" text="@L["Common:Search"].Value"
+                    icon="search" button-type="Primary" />
+            </abp-column>
+        </abp-row>
+    </abp-card>
+    <abp-card>
+        <abp-card-body>
+            <abp-table striped-rows="true" class="table-bordered" id="EmployeeTable"></abp-table>
+        </abp-card-body>
+    </abp-card>
+</section>
